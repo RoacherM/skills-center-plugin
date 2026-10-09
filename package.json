@@ -1,0 +1,39 @@
+{
+  "name": "@local/dsh-skills",
+  "version": "0.1.0",
+  "description": "Skills Hub: discover, inspect, and manage installed third-party and built-in skills in DSH",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./dist/host.js",
+    "./client": "./client.js"
+  },
+  "files": [
+    "index.js",
+    "dist/host.js",
+    "client.js",
+    "cordis.patch.yml"
+  ],
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node --test test/"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-sidebar",
+        "@deepseek-ai/dsh-client-ui-workspace"
+      ]
+    }
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  }
+}
